@@ -28,7 +28,7 @@ sudo apt-get install grafana
 
 
 # optional
-sudo apt-get install -y apt-transport-https
+sudo apt-get --force-yes install -y apt-transport-https
 
 # Start the server
 
