@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
+
+if [ ! -f grafana_2.1.3_amd64.deb ]
+then
 wget https://grafanarel.s3.amazonaws.com/builds/grafana_2.1.3_amd64.deb
+fi
 sudo apt-get install -y adduser libfontconfig
 sudo dpkg -i grafana_2.1.3_amd64.deb
 
@@ -13,6 +17,7 @@ then
 echo $line >> /etc/apt/sources.list
 fi
 
+sudo apt-get --force-yes install -y curl
 
 curl https://packagecloud.io/gpg.key | sudo apt-key add -
 
@@ -23,7 +28,7 @@ sudo apt-get install grafana
 
 
 # optional
-#sudo apt-get install -y apt-transport-https
+sudo apt-get install -y apt-transport-https
 
 # Start the server
 
