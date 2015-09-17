@@ -1,0 +1,40 @@
+
+
+# Where does Graphite store all my files?
+
+
+
+GRAPHITE_ROOT
+=> /opt/graphite
+
+CONF_DIR
+=>
+web setting             => local_settings.py
+carbon related config   => dashboard.conf,  graphTemplates.conf,...
+
+GRAPHITE_CONF_DIR
+=> GRAPHITE_ROOT/conf
+
+STORAGE_DIR
+=> /opt/graphite/storage
+
+GRAPHITE_STORAGE_DIR
+=> /opt/graphite/storage
+
+LOCAL_DATA_DIR
+=>
+where whisper files    => STORAGE_DIR/whrisper
+
+WHISPER_DIR
+=> /opt/graphite/storage/whisper => tells graphite web, where to find files
+
+RRD_DIR
+=> /opt/graphite/storage/rrd
+
+LOG_DIR
+=> STORAGE_DIR/log
+ web app logs
+
+PID_DIR
+=> pidfiles
+
