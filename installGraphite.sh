@@ -45,26 +45,36 @@ export PATH=/opt/graphite/bin:$PATH
 
 # clone whisper repo
 cd /usr/local/src
-sudo git clone https://github.com/graphite-project/whisper.git
+if [ ! -d whisper ]
+then
+sudo
+git clone https://github.com/graphite-project/whisper.git
+fi
 cd whisper
-sudo git checkout 0.9.13
+sudo git checkout 0.9.x
 sudo -E python setup.py install
 
 
 # clone carbo repo
 cd /usr/local/src
+if [ ! -d carbon ]
+then
 sudo git clone https://github.com/graphite-project/carbon.git
+fi
 cd carbon
-sudo git checkout 0.9.13
+sudo git checkout 0.9.x
 sudo -E pip install -r requirements.txt
 sudo -E python setup.py install
 
 
 # clone web interface
 cd /usr/local/src
+if [ ! -d graphite-web ]
+then
 sudo git clone https://github.com/graphite-project/graphite-web.git
+fi
 cd graphite-web
-sudo git checkout 0.9.13
+sudo git checkout 0.9.x
 sudo -E pip install -r requirements.txt
 sudo -E pip install rrdtool python-ldap
 python check-dependencies.py
@@ -81,8 +91,11 @@ echo "Installation Complete!!!"
 echo "Prepare Web Database"
 
 cd /opt/graphite/webapp/graphite
+echo "yes->admin->chenglong.zq@gmail.com->admin->admin"
 sudo -E python manage.py syncdb
 
 
+
+echo "Configure Carbon 2/8 (only mandatory)"
 
 
